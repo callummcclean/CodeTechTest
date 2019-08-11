@@ -9,7 +9,10 @@ class Checkout implements ICheckout {
 
   scan(item: string): void {
     if (item === 'A') {
-      this.subTotal = 50;
+      this.subTotal += 50;
+    }
+    if (item === 'B') {
+      this.subTotal += 30;
     }
   }
 
