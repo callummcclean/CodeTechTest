@@ -4,23 +4,21 @@ import IPriceProvider from './IPriceProvider';
 class Checkout implements ICheckout {
   priceList: IPriceProvider;
   subTotal: number;
-  countOfA: number;
+  counts: Object;
 
   constructor(priceList: IPriceProvider) {
     this.priceList = priceList;
     this.subTotal = 0;
-    this.countOfA = 0;
+    this.counts = {};
   }
 
   scan(item: string): void {
+    this.counts[item] = this.counts[item] ? this.counts[item] += 1 : 1;
     this.subTotal += this.priceList.get(item);
-    if (item === 'A') {
-      this.countOfA += 1;
-    }
   }
 
   getTotalPrice(): number {
-    if (this.countOfA === 3) {
+    if (this.counts['A'] === 3) {
       return this.subTotal - 20;
     }
     return this.subTotal;
