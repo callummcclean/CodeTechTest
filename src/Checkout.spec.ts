@@ -68,4 +68,10 @@ describe('Special Prices Applied', () => {
 
     expect(total).toBe(260);
   });
+
+  it('returns 45 when BB scanned', () => {
+    const total = price('BB');
+
+    expect(total).toBe(45);
+  });
 });
