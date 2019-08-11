@@ -18,7 +18,7 @@ class Checkout implements ICheckout {
   }
 
   getTotalPrice(): number {
-    if (this.counts['A'] === 3) {
+    if (this.counts['A'] >= 3) {
       return this.subTotal - 20;
     }
     return this.subTotal;
