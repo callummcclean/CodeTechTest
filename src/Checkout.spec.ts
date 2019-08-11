@@ -27,4 +27,10 @@ describe('Totals with no special prices', () => {
 
     expect(total).toBe(80);
   });
+
+  it('returns 100 when ABC scanned', () => {
+    const total = price('ABC');
+
+    expect(total).toBe(100);
+  });
 });
