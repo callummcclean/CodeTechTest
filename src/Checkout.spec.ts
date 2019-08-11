@@ -1,9 +1,15 @@
 import Checkout from './Checkout';
 import PriceProvider from './PriceProvider';
+import DiscountProvider from './DiscountProvider';
+import { IDiscount } from './IDiscountProvider';
 
 const price = (items: string): number => {
   const priceList = new PriceProvider({ A: 50, B: 30, C: 20, D: 15 });
-  const checkout = new Checkout(priceList);
+  const discounts: Map<string, IDiscount> = new Map<string, IDiscount>();
+  discounts.set('A', { discount: 20, quantity: 3 });
+  discounts.set('B', { discount: 15, quantity: 2 });
+  const discountProvider = new DiscountProvider(discounts);
+  const checkout = new Checkout(priceList, discountProvider);
   items.split('').forEach((item: string) => {
     checkout.scan(item);
   });

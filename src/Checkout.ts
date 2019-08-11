@@ -1,32 +1,28 @@
 import ICheckout from './ICheckout';
 import IPriceProvider from './IPriceProvider';
+import { IDiscountProvider } from './IDiscountProvider';
 
 class Checkout implements ICheckout {
   priceList: IPriceProvider;
+  discountProvider: IDiscountProvider;
+  items: string[];
   subTotal: number;
-  counts: Object;
 
-  constructor(priceList: IPriceProvider) {
+  constructor(priceList: IPriceProvider, discountProvider: IDiscountProvider) {
     this.priceList = priceList;
+    this.discountProvider = discountProvider;
+    this.items = [];
     this.subTotal = 0;
-    this.counts = {};
   }
 
   scan(item: string): void {
-    this.counts[item] = this.counts[item] ? this.counts[item] += 1 : 1;
+    this.items.push(item);
     this.subTotal += this.priceList.get(item);
   }
 
   getTotalPrice(): number {
-    if (this.counts['A']) {
-      const timesDiscountApplicable = Math.floor(this.counts['A'] / 3);
-      return this.subTotal - (20 * timesDiscountApplicable);
-    }
-    if (this.counts['B']) {
-      const timesDiscountApplicable = Math.floor(this.counts['B'] / 2);
-      return this.subTotal - (15 * timesDiscountApplicable);
-    }
-    return this.subTotal;
+    const discount = this.discountProvider.calculateDiscount(this.items);
+    return this.subTotal - discount;
   }
 }
 
