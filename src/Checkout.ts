@@ -7,7 +7,7 @@ class Checkout implements ICheckout {
   }
 
   getTotalPrice(): number {
-    throw new Error('Method not implemented.');
+    return 0;
   }
 }
 
