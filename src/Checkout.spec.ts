@@ -56,4 +56,10 @@ describe('Special Prices Applied', () => {
 
     expect(total).toBe(130);
   });
+
+  it('returns 180 when AAAA scanned', () => {
+    const total = price('AAAA');
+
+    expect(total).toBe(180);
+  });
 });
