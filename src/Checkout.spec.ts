@@ -35,4 +35,25 @@ describe('Totals with no special prices', () => {
 
     expect(total).toBe(100);
   });
+
+  it('returns 115 when ABCD scanned', () => {
+    const total = price('ABCD');
+
+    expect(total).toBe(115);
+  });
+
+  it('returns 100 when AA scanned', () => {
+    const total = price('AA');
+
+    expect(total).toBe(100);
+  });
+});
+
+describe('Special Prices Applied', () => {
+
+  it('returns 130 when AAA scanned', () => {
+    const total = price('AAA');
+
+    expect(total).toBe(130);
+  });
 });
