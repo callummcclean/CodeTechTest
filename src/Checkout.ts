@@ -1,18 +1,20 @@
 import ICheckout from './ICheckout';
 
 class Checkout implements ICheckout {
-  total: number;
+  subTotal: number;
 
   constructor() {
-    this.total = 0;
+    this.subTotal = 0;
   }
 
   scan(item: string): void {
-    this.total = 50;
+    if (item === 'A') {
+      this.subTotal = 50;
+    }
   }
 
   getTotalPrice(): number {
-    return this.total;
+    return this.subTotal;
   }
 }
 
