@@ -16,4 +16,13 @@ describe('Totals with no special prices', () => {
 
     expect(total).toBe(50);
   });
+
+  it('returns 80 when AB scanned', () => {
+    const checkout = new Checkout();
+    checkout.scan('A');
+    checkout.scan('B');
+    const total = checkout.getTotalPrice();
+
+    expect(total).toBe(80);
+  });
 });
