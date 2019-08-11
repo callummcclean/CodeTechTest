@@ -1,22 +1,17 @@
 import ICheckout from './ICheckout';
+import IPriceProvider from './IPriceProvider';
 
 class Checkout implements ICheckout {
+  priceList: IPriceProvider;
   subTotal: number;
 
-  constructor() {
+  constructor(priceList: IPriceProvider) {
+    this.priceList = priceList;
     this.subTotal = 0;
   }
 
   scan(item: string): void {
-    if (item === 'A') {
-      this.subTotal += 50;
-    }
-    if (item === 'B') {
-      this.subTotal += 30;
-    }
-    if (item === 'C') {
-      this.subTotal += 20;
-    }
+    this.subTotal += this.priceList.get(item);
   }
 
   getTotalPrice(): number {

@@ -1,7 +1,9 @@
 import Checkout from './Checkout';
+import PriceProvider from './PriceProvider';
 
 const price = (items: string): number => {
-  const checkout = new Checkout();
+  const priceList = new PriceProvider({ A: 50, B: 30, C: 20, D: 15 });
+  const checkout = new Checkout(priceList);
   items.split('').forEach((item: string) => {
     checkout.scan(item);
   });
