@@ -1,13 +1,18 @@
 import ICheckout from './ICheckout';
 
 class Checkout implements ICheckout {
+  total: number;
+
+  constructor() {
+    this.total = 0;
+  }
 
   scan(item: string): void {
-    throw new Error('Method not implemented.');
+    this.total = 50;
   }
 
   getTotalPrice(): number {
-    return 0;
+    return this.total;
   }
 }
 
