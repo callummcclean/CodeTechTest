@@ -14,6 +14,9 @@ class Checkout implements ICheckout {
     if (item === 'B') {
       this.subTotal += 30;
     }
+    if (item === 'C') {
+      this.subTotal += 20;
+    }
   }
 
   getTotalPrice(): number {
