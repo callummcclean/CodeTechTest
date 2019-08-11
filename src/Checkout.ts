@@ -22,6 +22,10 @@ class Checkout implements ICheckout {
       const timesDiscountApplicable = Math.floor(this.counts['A'] / 3);
       return this.subTotal - (20 * timesDiscountApplicable);
     }
+    if (this.counts['B']) {
+      const timesDiscountApplicable = Math.floor(this.counts['B'] / 2);
+      return this.subTotal - (15 * timesDiscountApplicable);
+    }
     return this.subTotal;
   }
 }
