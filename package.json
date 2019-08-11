@@ -1,0 +1,29 @@
+{
+  "name": "CodeTechTest",
+  "version": "1.0.0",
+  "description": "Code Computer Love Technical Test",
+  "author": "Callum McClean",
+  "engineStrict": true,
+  "engines": {
+    "node": ">= 8.9.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^22.2.3",
+    "@types/node": "^8.10.12",
+    "jest": "~22.4.3",
+    "ts-jest": "^22.4.5",
+    "tslint": "~5.9.1",
+    "tslint-config-airbnb": "^5.8.0",
+    "tsutils": "~2.24.0",
+    "typescript": "^2.8.3"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "lint": "tslint -t stylish --project \"tsconfig.json\"",
+    "pretest": "npm run build",
+    "test": "jest",
+    "test-only": "jest --coverage",
+    "test:watch": "jest --watch"
+  },
+  "dependencies": {}
+}
